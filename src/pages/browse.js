@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from "react";
 //import { BrowseContainer } from '../containers/browse';
 //import { useContent } from '../hooks';
 //import { selectionFilter } from '../utils';
-import Banner from '../freshcontent/Banner';
-import requests from '../freshcontent/requests';
-import Row from '../freshcontent/Row';
-import { FooterContainer } from '../containers/footer';
-import { Header, Loading } from '../components';
-import { SelectProfileContainer } from '../containers/profiles';
-import * as ROUTES from '../constants/routes';
-import logo from '../logo.svg';
-import { FirebaseContext } from '../context/firebase';
+import Banner from "../freshcontent/Banner";
+import requests from "../freshcontent/requests";
+import Row from "../freshcontent/Row";
+import { FooterContainer } from "../containers/footer";
+import { Header, Loading } from "../components";
+import { SelectProfileContainer } from "../containers/profiles";
+import * as ROUTES from "../constants/routes";
+import logo from "../logo.svg";
+import { FirebaseContext } from "../context/firebase";
 
 export default function Browse() {
   const [profile, setProfile] = useState({});
@@ -33,25 +33,27 @@ export default function Browse() {
   return profile.displayName ? (
     <>
       {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
-        <Header.Frame>
-          <Header.Group>
-            <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix" />
-          </Header.Group>
-          <Header.Group>
-            <Header.Profile>
-              <Header.Picture src={user.photoURL} />
-              <Header.Dropdown>
-                <Header.Group>
-                  <Header.Picture src={user.photoURL} />
-                  <Header.TextLink>{user.displayName}</Header.TextLink>
-                </Header.Group>
-                <Header.Group>
-                  <Header.TextLink onClick={() => firebase.auth().signOut()}>Sign out</Header.TextLink>
-                </Header.Group>
-              </Header.Dropdown>
-            </Header.Profile>
-          </Header.Group>
-        </Header.Frame>
+      <Header.Frame>
+        <Header.Group>
+          <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix" />
+        </Header.Group>
+        <Header.Group>
+          <Header.Profile>
+            <Header.Picture src={user.photoURL} />
+            <Header.Dropdown>
+              <Header.Group>
+                <Header.Picture src={user.photoURL} />
+                <Header.TextLink>{user.displayName}</Header.TextLink>
+              </Header.Group>
+              <Header.Group>
+                <Header.TextLink onClick={() => firebase.auth().signOut()}>
+                  Sign out
+                </Header.TextLink>
+              </Header.Group>
+            </Header.Dropdown>
+          </Header.Profile>
+        </Header.Group>
+      </Header.Frame>
       <Banner />
       <Row
         title="NETFLIX ORIGINALS"
